@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
         }
     }

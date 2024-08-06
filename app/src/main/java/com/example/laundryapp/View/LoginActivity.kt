@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.laundryapp.MainActivity
 import com.example.laundryapp.R
 import com.example.laundryapp.databinding.ActivityLoginBinding
 
@@ -19,8 +20,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
+
+            buttonLogin.setOnClickListener {
+                Log.d("LoginActivity", "lRegister button cicked")
+                try {
+                    Intent(this@LoginActivity, MainActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+                } catch (e: Exception) {
+                    Log.e("LoginActivity", "Error starting activity", e)
+                }
+            }
+
+
             buttonRegister.setOnClickListener {
-                Log.d("LoginActivity", "Register button clicked")
+                Log.d("LoginActivity", "lRegister button cicked")
                 try {
                     Intent(this@LoginActivity, RegisterActivity::class.java).also {
                         startActivity(it)
