@@ -4,11 +4,15 @@
         android:title="Home"
         android:icon="@drawable/quality"/>
 
-    <item android:id="@+id/addLocation"
-        android:title="Location"
-        android:icon="@drawable/quality"/>
+    <item android:id="@+id/checkout"
+        android:title="Checkout"
+        android:icon="@drawable/edit"/>
+
+    <item android:id="@+id/orderDetails"
+        android:title="OrderDetails"
+        android:icon="@drawable/nearby"/>
 
     <item android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/arrow_ios_back"/>
+        android:icon="@drawable/myprofile"/>
 </menu>
