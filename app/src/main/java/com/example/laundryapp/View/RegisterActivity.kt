@@ -1,5 +1,6 @@
 package com.example.laundryapp.View
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,5 +17,12 @@ class RegisterActivity : AppCompatActivity() {
         binding=ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.apply {
+            buttonRegisterLogin.setOnClickListener{
+                Intent(this@RegisterActivity,LoginActivity::class.java).apply {
+                    finish()
+                }
+            }
+        }
     }
 }

@@ -21,8 +21,18 @@ class LoginActivity : AppCompatActivity() {
 
         binding.apply {
 
+            buttonForgotPassword.setOnClickListener {
+                try{
+                    Intent(this@LoginActivity,ForgotPasswordActivity::class.java).also {
+                        startActivity(it)
+                    }
+                }
+                catch (e:Exception){
+                    Log.e("LoginActivity", "Error starting activity", e)
+                }
+            }
+
             buttonLogin.setOnClickListener {
-                Log.d("LoginActivity", "lRegister button cicked")
                 try {
                     Intent(this@LoginActivity, MainActivity::class.java).also {
                         startActivity(it)
@@ -33,9 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-
             buttonRegister.setOnClickListener {
-                Log.d("LoginActivity", "lRegister button cicked")
                 try {
                     Intent(this@LoginActivity, RegisterActivity::class.java).also {
                         startActivity(it)
