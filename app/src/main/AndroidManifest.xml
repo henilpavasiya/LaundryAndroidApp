@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".View.HomeScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.ForgotPasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".View.SplashActivity"
             android:exported="true"
