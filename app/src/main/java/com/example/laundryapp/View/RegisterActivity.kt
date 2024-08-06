@@ -23,6 +23,17 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 }
             }
+
+            setSupportActionBar(commonAppBar.toolbar)
+
+            // Enable back button support
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+
+            // Handle back button click
+            commonAppBar.toolbar.setNavigationOnClickListener {
+                onBackPressed()
+            }
         }
     }
 }

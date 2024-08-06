@@ -31,8 +31,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" /> <!-- RegisterActivity -->
         <activity
             android:name=".View.RegisterActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" /> <!-- MainActivity -->
+            android:exported="true" /> <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"

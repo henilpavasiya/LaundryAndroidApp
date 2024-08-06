@@ -14,14 +14,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            setSupportActionBar(toolbar)
+            setSupportActionBar(commonAppBar.toolbar)
 
             // Enable back button support
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setDisplayShowHomeEnabled(true)
 
             // Handle back button click
-            toolbar.setNavigationOnClickListener {
+            commonAppBar.toolbar.setNavigationOnClickListener {
                 onBackPressed()
             }
         }
