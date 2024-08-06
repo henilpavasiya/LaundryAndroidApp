@@ -1,4 +1,4 @@
-package com.example.laundryapp.View
+package com.example.laundryapp.View.Auth
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

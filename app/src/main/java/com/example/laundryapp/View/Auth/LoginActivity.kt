@@ -1,14 +1,11 @@
-package com.example.laundryapp.View
+package com.example.laundryapp.View.Auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.laundryapp.MainActivity
-import com.example.laundryapp.R
 import com.example.laundryapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -23,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
             buttonForgotPassword.setOnClickListener {
                 try{
-                    Intent(this@LoginActivity,ForgotPasswordActivity::class.java).also {
+                    Intent(this@LoginActivity, ForgotPasswordActivity::class.java).also {
                         startActivity(it)
                     }
                 }

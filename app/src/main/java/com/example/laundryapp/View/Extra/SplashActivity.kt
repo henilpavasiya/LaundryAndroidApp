@@ -1,15 +1,10 @@
-package com.example.laundryapp.View
+package com.example.laundryapp.View.Extra
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.laundryapp.MainActivity
-import com.example.laundryapp.R
+import com.example.laundryapp.View.Auth.LoginActivity
 import com.example.laundryapp.databinding.ActivitySplashBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
