@@ -6,6 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.Home.HomeScreenActivity">
+    <include
+        android:id="@+id/commonAppBar"
+        layout="@layout/appbar_common"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
         android:id="@+id/flFragment"
