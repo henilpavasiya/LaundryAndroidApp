@@ -18,30 +18,49 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeScreenBinding.bind(view)
 
-        binding.apply {
-            val courseModelArrayList: ArrayList<HomeGridViewModel> = ArrayList()
-            courseModelArrayList.add(HomeGridViewModel("Checkout Order", R.drawable.laundry_empty))
-            courseModelArrayList.add(HomeGridViewModel("Order Details", R.drawable.orders))
-            courseModelArrayList.add(HomeGridViewModel("How app works?", R.drawable.plans))
-            courseModelArrayList.add(HomeGridViewModel("Plan", R.drawable.how))
+        val courseModelArrayList: ArrayList<HomeGridViewModel> = ArrayList()
+        courseModelArrayList.add(HomeGridViewModel("Checkout Order", R.drawable.laundry_empty))
+        courseModelArrayList.add(HomeGridViewModel("Order Details", R.drawable.orders))
+        courseModelArrayList.add(HomeGridViewModel("How app works?", R.drawable.plans))
+        courseModelArrayList.add(HomeGridViewModel("Plan", R.drawable.how))
 
-            val adapter = HomeGridViewAdapter(requireContext(), courseModelArrayList)
-            binding.idGVHome.adapter = adapter
-
-
-            val image= listOf(
-                R.drawable.slice1,
-                R.drawable.slice2
-            )
-            val adapter2 = ViewPageAdapter(image)
-                pvImage.adapter=adapter2
-                pvImage.orientation= ViewPager2.ORIENTATION_HORIZONTAL // We also change orientation to verticle
-
-                //we also move image automatically
-                pvImage.beginFakeDrag()
-                pvImage.fakeDragBy(-10f)
-                pvImage.endFakeDrag()
+        val adapter = HomeGridViewAdapter(requireContext(), courseModelArrayList) { position ->
+            // Handle item clicks to navigate to the corresponding fragment
+            val activity = activity as HomeScreenActivity
+            when (position) {
+                0 -> {
+                    activity.setCurrentFragment(CheckoutScreenFragment())
+                    activity.selectBottomNavItem(R.id.checkout)
+                }
+                1 -> {
+                    activity.setCurrentFragment(OrderScreenFragment())
+                    activity.selectBottomNavItem(R.id.orderDetails)
+                }
+                2 -> {
+                    activity.setCurrentFragment(OrderScreenFragment())
+                    activity.selectBottomNavItem(R.id.profile) // Update if you have a dedicated nav item
+                }
+                3 -> {
+                    activity.setCurrentFragment(ProfileScreenFragment())
+                    activity.selectBottomNavItem(R.id.profile)
+                }
+            }
         }
+
+        binding.idGVHome.adapter = adapter
+
+        val images = listOf(
+            R.drawable.slice1,
+            R.drawable.slice2
+        )
+        val adapter2 = ViewPageAdapter(images)
+        binding.pvImage.adapter = adapter2
+        binding.pvImage.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        // Move images automatically
+        binding.pvImage.beginFakeDrag()
+        binding.pvImage.fakeDragBy(-10f)
+        binding.pvImage.endFakeDrag()
     }
 
     init {

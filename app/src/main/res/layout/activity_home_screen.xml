@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.Home.HomeScreenActivity">
+
     <include
         android:id="@+id/commonAppBar"
         layout="@layout/appbar_common"
@@ -35,6 +36,5 @@
         app:itemTextColor="@color/colorPrimaryDark"
         app:itemIconTint="@color/colorPrimaryDark"
         app:menu="@menu/bottom_navigation_bar" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
