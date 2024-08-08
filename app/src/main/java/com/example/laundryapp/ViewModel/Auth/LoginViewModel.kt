@@ -11,7 +11,7 @@ import com.example.laundryapp.View.Home.HomeScreenActivity
 
 class LoginViewModel : ViewModel() {
     private val _navigateTo = MutableLiveData<Class<*>?>()
-    val navigateTo: MutableLiveData<Class<*>?> get()= _navigateTo
+    val navigateTo: LiveData<Class<*>?> get()= _navigateTo
 
     fun onForgotPasswordClicked() {
         _navigateTo.value = ForgotPasswordActivity::class.java
