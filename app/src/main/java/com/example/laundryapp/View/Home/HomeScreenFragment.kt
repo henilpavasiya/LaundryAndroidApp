@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.laundryapp.Model.HomeGridViewModel
 import com.example.laundryapp.R
-import com.example.laundryapp.ViewModel.HomeGridViewAdapter
-import com.example.laundryapp.ViewModel.ViewPageAdapter
+import com.example.laundryapp.View.Components.HomeGridViewAdapter
+import com.example.laundryapp.View.Components.ViewPageAdapter
 import com.example.laundryapp.databinding.FragmentHomeScreenBinding
 
 class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {

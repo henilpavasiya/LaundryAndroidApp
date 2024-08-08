@@ -1,5 +1,6 @@
 package com.example.laundryapp.View.Auth
 
+import ViewModelFactory
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -7,25 +8,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.laundryapp.ViewModel.Auth.RegisterViewModel
+import com.example.laundryapp.Repository.UserRepository
+import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.ActivityRegisterBinding
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
-    private lateinit var registerViewModel: RegisterViewModel
+    private lateinit var authViewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+
+        val userRepository = UserRepository()
+        authViewModel = ViewModelProvider(this,ViewModelFactory(userRepository))[AuthViewModel::class.java]
         setupObservers()
 
         binding.apply {
@@ -37,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
             buttonRegister.setOnClickListener {
                 val registerEmail = textFieldRegisterEmail.text.toString()
                 val registerPassword = textFieldRegisterPassword.text.toString()
-                registerViewModel.onRegisterClicked(registerEmail, registerPassword)
+                authViewModel.onRegisterClicked(registerEmail, registerPassword)
             }
 
             setSupportActionBar(commonAppBar.toolbar)
@@ -54,17 +52,17 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun setupObservers() {
-        registerViewModel.navigateTo.observe(this, Observer {destination->
+        authViewModel.navigateTo.observe(this, Observer {destination->
             destination?.let {
                 Intent(this@RegisterActivity,it).also { intent->
-                     startActivity(intent)
-                    registerViewModel.doneNavigating()
+                    startActivity(intent)
+                    authViewModel.doneNavigating()
                     finish()
                 }
             }
         })
 
-        registerViewModel.loginStatus.observe(this, Observer{
+        authViewModel.authStatus.observe(this, Observer{
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
     }

@@ -1,4 +1,4 @@
-package com.example.laundryapp.ViewModel
+package com.example.laundryapp.View.Components
 
 import android.view.LayoutInflater
 import android.view.View
