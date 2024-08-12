@@ -52,6 +52,7 @@ class AuthViewModel(private val userRepository: UserRepository) : ViewModel() {
             _authStatus.value = "Email and Password cannot be empty"
         }
     }
+
     fun onRegisterSimpleClicked() {
         _navigateTo.value = RegisterActivity::class.java
     }
