@@ -24,6 +24,10 @@ class UserRepository {
         }
     }
 
+    suspend fun updateUser(username: String, userImage: String){
+
+    }
+
     fun logoutUser(){
         auth.signOut()
     }
