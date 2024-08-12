@@ -176,17 +176,5 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/buttonAlertDialog"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:text="AlertDialog"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

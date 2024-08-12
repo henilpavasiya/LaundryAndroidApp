@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
 import com.example.laundryapp.View.Auth.ForgotPasswordActivity
+import com.example.laundryapp.View.Auth.LoginActivity
 import com.example.laundryapp.View.Auth.RegisterActivity
 import com.example.laundryapp.View.Home.HomeScreenActivity
 import kotlinx.coroutines.launch
@@ -20,6 +21,9 @@ class AuthViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private val _authStatus = MutableLiveData<String>()
     val authStatus: LiveData<String> get() = _authStatus
+
+    private val _showLogoutDialog = MutableLiveData<Boolean>()
+    val showLogoutDialog: LiveData<Boolean> = _showLogoutDialog
 
     fun onLoginClicked(loginEmail: String, loginPassword: String) {
         if (loginEmail.isNotEmpty() && loginPassword.isNotEmpty()) {
@@ -62,9 +66,18 @@ class AuthViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun logout() {
         userRepository.logoutUser()
+        _navigateTo.value = LoginActivity::class.java
     }
 
     fun isUserLoggedIn(): Boolean {
         return userRepository.isUserLoggedIn()
+    }
+
+    fun requestLogoutDialog() {
+        _showLogoutDialog.value = true
+    }
+
+    fun logoutDialogShown() {
+        _showLogoutDialog.value = false
     }
 }
