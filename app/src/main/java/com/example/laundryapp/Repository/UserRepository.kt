@@ -1,6 +1,8 @@
 package com.example.laundryapp.Repository
 
+import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.coroutines.tasks.await
 
 class UserRepository {
@@ -24,11 +26,17 @@ class UserRepository {
         }
     }
 
-    suspend fun updateUser(username: String, userImage: String){
-
+    suspend fun updateUser(username: String, userImage: Uri): Void? {
+        return auth.currentUser?.let {
+            val profileUpdate = UserProfileChangeRequest.Builder()
+                .setDisplayName(username)
+                .setPhotoUri(userImage)
+                .build()
+            it.updateProfile(profileUpdate).await()
+        }
     }
 
-    fun logoutUser(){
+    fun logoutUser() {
         auth.signOut()
     }
 

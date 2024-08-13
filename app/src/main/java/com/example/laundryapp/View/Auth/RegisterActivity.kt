@@ -2,12 +2,14 @@ package com.example.laundryapp.View.Auth
 
 import ViewModelFactory
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
 import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.ActivityRegisterBinding
@@ -23,7 +25,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val userRepository = UserRepository()
-        authViewModel = ViewModelProvider(this,ViewModelFactory(userRepository))[AuthViewModel::class.java]
+        authViewModel =
+            ViewModelProvider(this, ViewModelFactory(userRepository))[AuthViewModel::class.java]
         setupObservers()
 
         binding.apply {
@@ -35,7 +38,16 @@ class RegisterActivity : AppCompatActivity() {
             buttonRegister.setOnClickListener {
                 val registerEmail = textFieldRegisterEmail.text.toString()
                 val registerPassword = textFieldRegisterPassword.text.toString()
-                authViewModel.onRegisterClicked(registerEmail, registerPassword)
+                val registerName = textFieldRegisterName.text.toString()
+                val registerImage = Uri.parse("android.resource://$packageName/${R.drawable.account}")
+                val registerAddress = textFieldRegisterAddress.text.toString()
+                authViewModel.onRegisterClicked(
+                    registerImage,
+                    registerName,
+                    registerEmail,
+                    registerAddress,
+                    registerPassword
+                )
             }
 
             setSupportActionBar(commonAppBar.toolbar)
@@ -52,9 +64,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun setupObservers() {
-        authViewModel.navigateTo.observe(this, Observer {destination->
+        authViewModel.navigateTo.observe(this, Observer { destination ->
             destination?.let {
-                Intent(this@RegisterActivity,it).also { intent->
+                Intent(this@RegisterActivity, it).also { intent ->
                     startActivity(intent)
                     authViewModel.doneNavigating()
                     finish()
@@ -62,11 +74,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-        authViewModel.authStatus.observe(this, Observer{
+        authViewModel.authStatus.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
     }
-
 
 
 }
