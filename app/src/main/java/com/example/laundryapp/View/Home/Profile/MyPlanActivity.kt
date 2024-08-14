@@ -17,7 +17,7 @@ class MyPlanActivity : AppCompatActivity() {
         setContentView(binding.root)
        binding.apply {
            setSupportActionBar(commonAppBar.toolbar)
-           // Handle back button click
+
            commonAppBar.toolbar.setNavigationOnClickListener {
                onBackPressed()
            }
