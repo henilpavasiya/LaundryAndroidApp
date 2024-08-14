@@ -67,6 +67,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         binding.apply {
             setSupportActionBar(commonAppBar.toolbar)
+            commonAppBar.toolbarTitle.text = "My Profile"
             // Handle back button click
             commonAppBar.toolbar.setNavigationOnClickListener {
                 onBackPressed()

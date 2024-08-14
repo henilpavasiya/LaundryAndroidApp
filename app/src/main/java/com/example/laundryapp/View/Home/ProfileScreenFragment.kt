@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
 import com.example.laundryapp.View.Home.Profile.EditProfileActivity
+import com.example.laundryapp.View.Home.Profile.MyPlanActivity
 import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.FragmentProfileScreenBinding
 
@@ -36,6 +37,11 @@ class ProfileScreenFragment : Fragment(R.layout.fragment_profile_screen) {
             buttonMyProfile.setOnClickListener{
                 Intent(requireActivity(), EditProfileActivity::class.java).also { intent ->
                     startActivity(intent)
+                }
+            }
+            buttonMyPlan.setOnClickListener{
+                Intent(requireActivity(),MyPlanActivity::class.java).also {
+                    startActivity(it)
                 }
             }
         }

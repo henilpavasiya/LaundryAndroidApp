@@ -17,7 +17,7 @@ class MyPlanActivity : AppCompatActivity() {
         setContentView(binding.root)
        binding.apply {
            setSupportActionBar(commonAppBar.toolbar)
-
+           commonAppBar.toolbarTitle.text="My Plan"
            commonAppBar.toolbar.setNavigationOnClickListener {
                onBackPressed()
            }
