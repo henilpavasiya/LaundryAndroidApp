@@ -65,5 +65,12 @@ class EditProfileActivity : AppCompatActivity() {
 
         authViewModel.loadUserData()
 
+        binding.apply {
+            setSupportActionBar(commonAppBar.toolbar)
+            // Handle back button click
+            commonAppBar.toolbar.setNavigationOnClickListener {
+                onBackPressed()
+            }
+        }
     }
 }
