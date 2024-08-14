@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
+import com.example.laundryapp.View.Home.Profile.EditProfileActivity
 import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.FragmentProfileScreenBinding
 
@@ -31,6 +32,11 @@ class ProfileScreenFragment : Fragment(R.layout.fragment_profile_screen) {
         binding.apply {
             buttonLogout.setOnClickListener {
                 authViewModel.requestLogoutDialog()
+            }
+            buttonMyProfile.setOnClickListener{
+                Intent(requireActivity(), EditProfileActivity::class.java).also { intent ->
+                    startActivity(intent)
+                }
             }
         }
         observeViewModel()

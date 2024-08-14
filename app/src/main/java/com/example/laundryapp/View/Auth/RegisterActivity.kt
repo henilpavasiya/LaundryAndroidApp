@@ -1,6 +1,7 @@
 package com.example.laundryapp.View.Auth
 
 import ViewModelFactory
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +18,8 @@ import com.example.laundryapp.databinding.ActivityRegisterBinding
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
     private lateinit var authViewModel: AuthViewModel
+    private var selectedImageUri: Uri? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.apply {
             buttonRegisterLogin.setOnClickListener {
                 Intent(this@RegisterActivity, LoginActivity::class.java).apply {
+                    startActivity(this)
                     finish()
                 }
             }
@@ -39,15 +43,25 @@ class RegisterActivity : AppCompatActivity() {
                 val registerEmail = textFieldRegisterEmail.text.toString()
                 val registerPassword = textFieldRegisterPassword.text.toString()
                 val registerName = textFieldRegisterName.text.toString()
-                val registerImage = Uri.parse("android.resource://$packageName/${R.drawable.account}")
-                val registerAddress = textFieldRegisterAddress.text.toString()
-                authViewModel.onRegisterClicked(
-                    registerImage,
-                    registerName,
-                    registerEmail,
-                    registerAddress,
-                    registerPassword
-                )
+                selectedImageUri?.let {uri->
+                    authViewModel.onRegisterClicked(
+                        uri,
+                        registerName,
+                        registerEmail,
+                        registerPassword
+                    )
+                } ?: run {
+                    Toast.makeText(this@RegisterActivity, "Please select an image", Toast.LENGTH_LONG).show()
+                }
+
+
+            }
+
+            imageView.setOnClickListener{
+                Intent(Intent.ACTION_GET_CONTENT).also {
+                    it.type="image/*"
+                    this@RegisterActivity.startActivityForResult(it,0)
+                }
             }
 
             setSupportActionBar(commonAppBar.toolbar)
@@ -79,5 +93,17 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == 0) {
+            val uri: Uri? = data?.data
+            if (uri != null) {
+                selectedImageUri = uri
+                binding.imageView.setImageURI(uri)
+            } else {
+                Toast.makeText(this, "Image selection failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 }

@@ -47,10 +47,18 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.support.annotations)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+
 }

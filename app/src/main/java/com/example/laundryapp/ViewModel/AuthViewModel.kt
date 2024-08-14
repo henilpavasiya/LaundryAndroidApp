@@ -1,6 +1,7 @@
 package com.example.laundryapp.ViewModel
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,15 @@ class AuthViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _showLogoutDialog = MutableLiveData<Boolean>()
     val showLogoutDialog: LiveData<Boolean> = _showLogoutDialog
 
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> get() = _userName
+
+    private val _userEmail = MutableLiveData<String>()
+    val userEmail:LiveData<String> get() = _userEmail
+
+    private val _userImageUri = MutableLiveData<Uri>()
+    val userImageUri:LiveData<Uri> = _userImageUri
+
     fun onLoginClicked(loginEmail: String, loginPassword: String) {
         if (loginEmail.isNotEmpty() && loginPassword.isNotEmpty()) {
             viewModelScope.launch {
@@ -42,20 +52,43 @@ class AuthViewModel(private val userRepository: UserRepository) : ViewModel() {
         registerImageView: Uri,
         registerName: String,
         registerEmail: String,
-        registerAddress: String,
         registerPassword: String
     ) {
         if (registerEmail.isNotEmpty() && registerPassword.isNotEmpty()) {
             viewModelScope.launch {
                 val result = userRepository.registerUser(registerEmail, registerPassword)
-                var userData = userRepository.updateUser(username = registerName, userImage = registerImageView)
-                _authStatus.value = result
                 if (result == "Register Successful") {
-                    _navigateTo.value = HomeScreenActivity::class.java
+                    val updateResult = userRepository.updateUser(username = registerName, userImage = registerImageView)
+                    Log.d("UserData", "User data update result: -> $updateResult")
+                    if (updateResult == "User Profile Updated Successfully") {
+                        _userImageUri.value = registerImageView
+                        _navigateTo.value = HomeScreenActivity::class.java
+                    }
+                    else{
+                        _authStatus.value = updateResult ?: "Failed to update user data"
+                    }
+                } else {
+                    _authStatus.value = result
                 }
             }
         } else {
             _authStatus.value = "Email and Password cannot be empty"
+        }
+    }
+
+    fun loadUserData() {
+        viewModelScope.launch {
+            val currentUser = userRepository.getCurrentUser()
+            if (currentUser != null) {
+                _userEmail.value = currentUser.email
+
+                // Get additional user data from Firestore
+                val userData = userRepository.getUserData(currentUser.uid)
+                userData?.let {
+                    _userName.value = it["username"] as String
+                    _userImageUri.value = Uri.parse(it["profileImage"] as String)
+                }
+            }
         }
     }
 
