@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".View.Home.Profile.PlanPaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.Home.Profile.MyPlanActivity"
             android:exported="false" />
         <activity

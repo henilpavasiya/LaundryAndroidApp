@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.laundryapp.Model.HomeGridViewModel
+import com.example.laundryapp.Model.HomeGridModel
 import com.example.laundryapp.R
 import com.example.laundryapp.View.Components.HomeGridViewAdapter
 import com.example.laundryapp.View.Components.ViewPageAdapter
@@ -18,11 +18,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeScreenBinding.bind(view)
 
-        val courseModelArrayList: ArrayList<HomeGridViewModel> = ArrayList()
-        courseModelArrayList.add(HomeGridViewModel("Checkout Order", R.drawable.laundry_empty))
-        courseModelArrayList.add(HomeGridViewModel("Order Details", R.drawable.orders))
-        courseModelArrayList.add(HomeGridViewModel("How app works?", R.drawable.plans))
-        courseModelArrayList.add(HomeGridViewModel("Plan", R.drawable.how))
+        val courseModelArrayList: ArrayList<HomeGridModel> = ArrayList()
+        courseModelArrayList.add(HomeGridModel("Checkout Order", R.drawable.laundry_empty))
+        courseModelArrayList.add(HomeGridModel("Order Details", R.drawable.orders))
+        courseModelArrayList.add(HomeGridModel("How app works?", R.drawable.plans))
+        courseModelArrayList.add(HomeGridModel("Plan", R.drawable.how))
 
         val adapter = HomeGridViewAdapter(requireContext(), courseModelArrayList) { position ->
             // Handle item clicks to navigate to the corresponding fragment

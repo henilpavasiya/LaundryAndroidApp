@@ -1,6 +1,6 @@
 package com.example.laundryapp.View.Auth
 
-import ViewModelFactory
+import ViewModelUserFactory
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val userRepository = UserRepository()
-        authViewModel = ViewModelProvider(this,ViewModelFactory(userRepository))[AuthViewModel::class.java]
+        authViewModel = ViewModelProvider(this,ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
 
         setupObservers()
 

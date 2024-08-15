@@ -8,10 +8,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.laundryapp.Model.HomeProductViewModel
+import com.example.laundryapp.Model.HomeProductModel
 import com.example.laundryapp.R
 
-class HomeProductViewAdapter(var homeProductViewModel: List<HomeProductViewModel>) :
+class HomeProductViewAdapter(var homeProductModel: List<HomeProductModel>) :
     RecyclerView.Adapter<HomeProductViewAdapter.HomeProductViewHolder>() {
     inner class HomeProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var productName: TextView = itemView.findViewById(R.id.textViewProductName)
@@ -29,29 +29,29 @@ class HomeProductViewAdapter(var homeProductViewModel: List<HomeProductViewModel
     }
 
     override fun getItemCount(): Int {
-        return homeProductViewModel.size
+        return homeProductModel.size
     }
 
     override fun onBindViewHolder(holder: HomeProductViewHolder, position: Int) {
         holder.apply {
             buttonPlus.setOnClickListener(){
-                homeProductViewModel[position].productQuantity++
-                productQuantity.text = homeProductViewModel[position].productQuantity.toString()
+                homeProductModel[position].productQuantity++
+                productQuantity.text = homeProductModel[position].productQuantity.toString()
                 productQuantityNumber.text = productQuantity.text
-                Log.d("buttonPlus","${homeProductViewModel[position].productQuantity}")
+                Log.d("buttonPlus","${homeProductModel[position].productQuantity}")
             }
             buttonMinus.setOnClickListener{
-                if(homeProductViewModel[position].productQuantity>0) {
-                    homeProductViewModel[position].productQuantity--
-                    productQuantity.text = homeProductViewModel[position].productQuantity.toString()
+                if(homeProductModel[position].productQuantity>0) {
+                    homeProductModel[position].productQuantity--
+                    productQuantity.text = homeProductModel[position].productQuantity.toString()
                     productQuantityNumber.text = productQuantity.text
-                    Log.d("buttonMinus", "${homeProductViewModel[position].productQuantity}")
+                    Log.d("buttonMinus", "${homeProductModel[position].productQuantity}")
                 }
             }
 
-            productName.text = homeProductViewModel[position].productName
+            productName.text = homeProductModel[position].productName
 
-            productImage.setImageResource(homeProductViewModel[position].productImage)
+            productImage.setImageResource(homeProductModel[position].productImage)
 
 
             Log.d("buttonMinus::", "${productQuantity.text}")

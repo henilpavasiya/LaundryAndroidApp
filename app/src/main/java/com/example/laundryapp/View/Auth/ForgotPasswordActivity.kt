@@ -1,6 +1,6 @@
 package com.example.laundryapp.View.Auth
 
-import ViewModelFactory
+import ViewModelUserFactory
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +20,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
         val userRepository = UserRepository()
         authViewModel =
-            ViewModelProvider(this, ViewModelFactory(userRepository))[AuthViewModel::class.java]
+            ViewModelProvider(this, ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
 
         binding.apply {
 

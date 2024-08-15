@@ -1,6 +1,6 @@
 package com.example.laundryapp.View.Auth
 
-import ViewModelFactory
+import ViewModelUserFactory
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
 import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.ActivityRegisterBinding
@@ -29,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val userRepository = UserRepository()
         authViewModel =
-            ViewModelProvider(this, ViewModelFactory(userRepository))[AuthViewModel::class.java]
+            ViewModelProvider(this, ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
         setupObservers()
 
         binding.apply {

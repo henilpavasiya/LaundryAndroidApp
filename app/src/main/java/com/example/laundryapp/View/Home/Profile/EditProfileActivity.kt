@@ -1,23 +1,17 @@
 package com.example.laundryapp.View.Home.Profile
 
-import ViewModelFactory
-import android.graphics.drawable.Drawable
+import ViewModelUserFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
 import com.example.laundryapp.R
 import com.example.laundryapp.Repository.UserRepository
 import com.example.laundryapp.ViewModel.AuthViewModel
 import com.example.laundryapp.databinding.ActivityEditProfileBinding
-import com.squareup.picasso.Picasso
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -31,7 +25,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         val userRepository = UserRepository()
         authViewModel =
-            ViewModelProvider(this, ViewModelFactory(userRepository))[AuthViewModel::class.java]
+            ViewModelProvider(this, ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
 
         authViewModel.userName.observe(this, Observer { userName ->
             binding.textViewName.text = userName

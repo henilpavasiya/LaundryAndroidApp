@@ -1,13 +1,11 @@
 package com.example.laundryapp.View.Home
 
-import ViewModelFactory
+import ViewModelUserFactory
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -28,7 +26,7 @@ class ProfileScreenFragment : Fragment(R.layout.fragment_profile_screen) {
 
         val userRepository = UserRepository()
         authViewModel =
-            ViewModelProvider(this, ViewModelFactory(userRepository))[AuthViewModel::class.java]
+            ViewModelProvider(this, ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
 
         binding.apply {
             buttonLogout.setOnClickListener {

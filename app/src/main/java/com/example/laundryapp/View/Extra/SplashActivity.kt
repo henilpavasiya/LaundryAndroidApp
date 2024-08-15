@@ -1,6 +1,6 @@
 package com.example.laundryapp.View.Extra
 
-import ViewModelFactory
+import ViewModelUserFactory
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val userRepository= UserRepository()
-        authViewModel = ViewModelProvider(this,ViewModelFactory(userRepository))[AuthViewModel::class.java]
+        authViewModel = ViewModelProvider(this,ViewModelUserFactory(userRepository))[AuthViewModel::class.java]
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)

@@ -8,14 +8,14 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.example.laundryapp.Model.HomeGridViewModel
+import com.example.laundryapp.Model.HomeGridModel
 import com.example.laundryapp.R
 
 class HomeGridViewAdapter(
     context: Context,
-    private val courseModelArrayList: ArrayList<HomeGridViewModel>,
+    private val courseModelArrayList: ArrayList<HomeGridModel>,
     private val onItemClick: (position: Int) -> Unit
-) : ArrayAdapter<HomeGridViewModel>(context, 0, courseModelArrayList) {
+) : ArrayAdapter<HomeGridModel>(context, 0, courseModelArrayList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var listItemView = convertView
@@ -24,7 +24,7 @@ class HomeGridViewAdapter(
             listItemView = LayoutInflater.from(context).inflate(R.layout.home_gridview, parent, false)
         }
 
-        val courseModel: HomeGridViewModel? = getItem(position)
+        val courseModel: HomeGridModel? = getItem(position)
         val courseTV = listItemView!!.findViewById<TextView>(R.id.idTVCourse)
         val courseIV = listItemView.findViewById<ImageView>(R.id.idIVcourse)
         val selectedGridView=listItemView.findViewById<LinearLayout>(R.id.buttonGrid)

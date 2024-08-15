@@ -33,12 +33,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5KG"
+        android:id="@+id/button5KG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
+        android:clickable="true"
         android:elevation="4dp"
+        android:focusable="true"
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -85,10 +87,7 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
-
-
             </LinearLayout>
 
 
@@ -121,15 +120,18 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/button10KG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="15dp"
+        android:clickable="true"
         android:elevation="4dp"
+        android:focusable="true"
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5KG">
+        app:layout_constraintTop_toBottomOf="@+id/button5KG">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,6 +173,7 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -200,8 +203,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="The plan includes laundry bag pickup and delivery services, 1 pickup/delivery per week." />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonBuyLaundryPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Buy Laundry Plan "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button10KG">
+
+
+    </androidx.appcompat.widget.AppCompatButton>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
