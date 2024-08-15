@@ -48,7 +48,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -66,8 +66,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -77,6 +76,7 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="25sp"
                         android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -87,7 +87,6 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -118,10 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="The plan includes laundry bag pickup and delivery services, 1 pickup/delivery per week." />
-
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -138,7 +134,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -156,8 +152,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,6 +162,7 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="25sp"
                         android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -175,9 +172,6 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-
-
-
             </LinearLayout>
 
 
@@ -206,10 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="The plan includes laundry bag pickup and delivery services, 1 pickup/delivery per week." />
-
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 
 
