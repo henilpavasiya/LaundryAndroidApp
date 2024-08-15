@@ -3,8 +3,12 @@ package com.example.laundryapp.View.Home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.laundryapp.Model.HomeProductViewModel
 import com.example.laundryapp.R
+import com.example.laundryapp.View.Components.HomeProductViewAdapter
 import com.example.laundryapp.databinding.FragmentCheckoutScreenBinding
 
 /**
@@ -17,12 +21,23 @@ class CheckoutScreenFragment : Fragment(R.layout.fragment_checkout_screen) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding= FragmentCheckoutScreenBinding.inflate(layoutInflater)
-        binding.apply {
+        binding = FragmentCheckoutScreenBinding.bind(view)
 
+        var productList = mutableListOf(
+            HomeProductViewModel("T-shirt", 2, R.drawable.how),
+            HomeProductViewModel("Pant", 1, R.drawable.orders),
+            HomeProductViewModel("T-shirt", 2, R.drawable.how),
+            HomeProductViewModel("Pant", 1, R.drawable.orders),
+        )
+        val homeProductViewAdapter=HomeProductViewAdapter(productList)
+
+        binding.apply {
+            rvProduct.adapter=homeProductViewAdapter
+            rvProduct.layoutManager = LinearLayoutManager(requireContext())
         }
     }
+
     init {
-        Log.d("Fragment","CheckScreen Fragment")
+        Log.d("Fragment", "CheckScreen Fragment")
     }
 }
