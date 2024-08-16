@@ -24,6 +24,9 @@ class MyPlanViewModel(private val planRepository: PlanRepository) : ViewModel() 
     private val _navigateTo = MutableLiveData<Class<*>?>()
     val navigateTo : LiveData<Class<*>?> get() = _navigateTo
 
+    private val _authStatus = MutableLiveData<String>()
+    val authStatus: LiveData<String> get() = _authStatus
+
     fun buyLaundryPlan(lastDate: String, price: Int, status: Boolean, title: String) {
         viewModelScope.launch {
             val updateResult = planRepository.orderLaundryPlan(lastDate, price, status, title)
@@ -31,7 +34,7 @@ class MyPlanViewModel(private val planRepository: PlanRepository) : ViewModel() 
                 _navigateTo.value = PlanPaymentActivity::class.java
             }
             else{
-
+                _authStatus.value = updateResult ?: "Failed to update user data"
             }
         }
     }

@@ -19,7 +19,7 @@ class PlanRepository {
                     "planStatus" to planStatus,
                     "planTitle" to planTitle
                 )
-                firestore.collection("users").document(user.uid).set(planMap).await()
+                firestore.collection("users").document(user.uid).update(planMap as Map<String, Any>).await()
                 "Laundry plan has been changed successfully"
             }
             catch (e:Exception){
